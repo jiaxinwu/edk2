@@ -49,9 +49,11 @@
   gEdkiiCommunicationBufferGuid
 
 [Ppis]
+  gPeiSmmControlPpiGuid
+  gEfiPeiMmCommunicationPpiGuid
 
 [Pcd]
   gEfiMdeModulePkgTokenSpaceGuid.PcdFixedCommBufferPages
 
 [Depex]
-  gEfiPeiMpServicesPpiGuid
+  gEfiPeiMpServicesPpiGuid AND gPeiSmmControlPpiGuid
