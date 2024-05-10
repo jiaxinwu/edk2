@@ -25,6 +25,7 @@
 [Sources]
   StandaloneMmIplPei.c
   StandaloneMmIplPei.h
+  MmFoundationHob.c
 
 [Packages]
   MdePkg/MdePkg.dec
@@ -43,11 +44,19 @@
   BaseMemoryLib
   PeCoffLib
   CacheMaintenanceLib
+  MmPlatformHobProducerLib
 
 [Guids]
   gEfiSmmSmramMemoryGuid
   gEdkiiCommunicationBufferGuid
   gEdkiiEventMmDispatchGuid
+  gSmmBaseHobGuid
+  gMpInformation2HobGuid
+  gEdkiiSmmProfileDataGuid
+  gEfiAcpiVariableGuid
+  gMmUnblockRegionHobGuid
+  gEdkiiAcpiS3EnableHobGuid
+  gEdkiiSmmCpuSyncConfigHobGuid
 
 [Ppis]
   gPeiSmmControlPpiGuid
@@ -59,6 +68,13 @@
 
 [Pcd]
   gEfiMdeModulePkgTokenSpaceGuid.PcdFixedCommBufferPages
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmRestrictedMemoryAccess        ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmProfileEnable                 ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiS3Enable                   ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmSyncMode                      ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmApSyncTimeout                 ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmApSyncTimeout2                ## CONSUMES
+  gUefiCpuPkgTokenSpaceGuid.PcdCpuSmmProfileSize                   ## CONSUMES
 
 [Depex]
   gEfiPeiMpServicesPpiGuid AND gPeiSmmControlPpiGuid
