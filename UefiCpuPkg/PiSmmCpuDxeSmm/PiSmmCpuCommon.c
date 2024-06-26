@@ -932,6 +932,26 @@ PiSmmCpuEntryCommon (
     PatchInstructionX86 (mPatchCetSupported, mCetSupported, 1);
   }
 
+  RegEax = 0;
+  RegEdx = 0;
+  AsmCpuid (CPUID_EXTENDED_FUNCTION, &RegEax, NULL, NULL, NULL);
+  if (RegEax <= CPUID_EXTENDED_FUNCTION) {
+    //
+    // Extended CPUID functions are not supported on this processor.
+    //
+    mXdSupported = FALSE;
+    PatchInstructionX86 (gPatchXdSupported, mXdSupported, 1);
+  }
+
+  AsmCpuid (CPUID_EXTENDED_CPU_SIG, NULL, NULL, NULL, &RegEdx);
+  if ((RegEdx & CPUID1_EDX_XD_SUPPORT) == 0) {
+    //
+    // Execute Disable Bit feature is not supported on this processor.
+    //
+    mXdSupported = FALSE;
+    PatchInstructionX86 (gPatchXdSupported, mXdSupported, 1);
+  }
+
   //
   // Compute tile size of buffer required to hold the CPU SMRAM Save State Map, extra CPU
   // specific context start starts at SMBASE + SMM_PSD_OFFSET, and the SMI entry point.
