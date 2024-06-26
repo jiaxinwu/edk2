@@ -155,6 +155,11 @@ SmmReadyToLockEventNotify (
     // Get Software SMI from FADT
     //
     GetSmiCommandPort ();
+
+    //
+    // Initialize protected memory range for patching page table later.
+    //
+    InitProtectedMemRange ();
   }
 
   //
