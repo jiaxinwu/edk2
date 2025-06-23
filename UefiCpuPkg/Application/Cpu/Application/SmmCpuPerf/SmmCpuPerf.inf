@@ -1,0 +1,61 @@
+## @file
+# Implementation of SMM CPU Performance Application.
+#
+#  Copyright (c) 2025, Intel Corporation. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SmmCpuPerf
+  FILE_GUID                      = 562F5A42-2523-472B-99B4-6EF2942A66C5
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SmmCpuPerfInit
+
+#
+#  This flag specifies whether HII resource section is generated into PE image.
+#
+  UEFI_HII_RESOURCE_SECTION      = TRUE
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = X64
+#
+
+[Sources]
+  SmmCpuPerf.c
+  SmmCpuPerf.uni
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  ServerPlatformPkg/PlatformPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  UefiBootServicesTableLib
+  UefiApplicationEntryPoint
+  UefiRuntimeServicesTableLib
+  ShellLib
+  DebugLib
+  UefiLib
+  IoLib
+  PciLib
+  PcdLib
+  LocalApicLib
+  BaseMemoryLib
+  TimerLib
+
+  [Protocols]
+  gEfiMpServiceProtocolGuid                             ## CONSUMES
+  gEfiMmCommunicationProtocolGuid                       ## CONSUMES
+
+  [Guids]
+  gEdkiiPiSmmCommunicationRegionTableGuid               ## CONSUMES
+  gSmmCpuPerfHobGuid                                    ## CONSUMES

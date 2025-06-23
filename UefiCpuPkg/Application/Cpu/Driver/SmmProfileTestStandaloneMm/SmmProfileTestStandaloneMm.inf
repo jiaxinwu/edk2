@@ -1,0 +1,64 @@
+## @file
+# This Standalone MM driver performs SMM Profile Test.
+#
+#  Copyright (c) 2025, Intel Corporation. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SmmProfileTestStandaloneMm
+  FILE_GUID                      = 87CE55AB-E193-404B-BA95-1BBE204386AF
+  MODULE_TYPE                    = MM_STANDALONE
+  VERSION_STRING                 = 1.0
+  PI_SPECIFICATION_VERSION       = 0x00010032
+  ENTRY_POINT                    = SmmProfileTestStandaloneMmEntry
+  UNLOAD_IMAGE                   = SmmProfileTestStandaloneMmUnload
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = X64
+#
+
+[Sources]
+  SmmProfileTestStandaloneMm.c
+  SmmProfileTestStandaloneMm.h
+
+[Sources.X64]
+  X64/SmmProfileTestStandaloneMm.nasm
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ServerPlatformPkg/PlatformPkg.dec
+
+[LibraryClasses]
+  StandaloneMmDriverEntryPoint
+  PcdLib
+  DebugLib
+  BaseLib
+  PrintLib
+  SynchronizationLib
+  BaseMemoryLib
+  TimerLib
+  MmServicesTableLib
+  MemoryAllocationLib
+  DebugAgentLib
+  HobLib
+  MemLib
+  DevicePathLib
+  PeCoffGetEntryPointLib
+  IoLib
+  HobLib
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid
+
+[Guids]
+  gSmmProfileTestHobGuid                                ## CONSUMES
+
+[Depex]
+  TRUE

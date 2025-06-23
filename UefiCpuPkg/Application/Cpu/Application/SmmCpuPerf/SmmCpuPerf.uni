@@ -1,0 +1,33 @@
+/// @file
+// UNI of SMM CPU Performance Application.
+//
+//  Copyright (c) 2025, Intel Corporation. All rights reserved.<BR>
+//  SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+///
+
+/=#
+
+#langdef   en-US "english"
+
+#string STR_GET_HELP_SMIPERF  #language en-US ""
+".TH smmcpuperf 0 "Measure SMM CPU performance."\r\n"
+".SH NAME\r\n"
+"Measure SMM CPU performance:\r\n"
+".SH SYNOPSIS\r\n"
+"\r\n"
+"SMMCPUPERF [-round]\r\n"
+"SMMCPUPERF [-swsmi][-b2]\r\n"
+"SMMCPUPERF [-bsplock]\r\n"
+"SMMCPUPERF [-contendedlock]\r\n"
+"SMMCPUPERF [-counter]\r\n"
+"SMMCPUPERF [-semsync]\r\n"
+".SH OPTIONS\r\n"
+" \r\n"
+" -round                        - Specify the round of each test.\r\n"
+" -swsmi                        - Perform SW SMI check.\r\n"
+" -b2                           - Specify what byte value written to port B2.\r\n"
+" -bsplock                      - Perform SmmCpuPerfBspLock check.\r\n"
+" -contendedlock                - Perform SmmCpuPerfContendedLock check.\r\n"
+" -counter                      - Perform SmmCpuPerfCounter check.\r\n"
+" -semsync                      - Perform SmmCpuPerfSemaphoreSync check.\r\n"

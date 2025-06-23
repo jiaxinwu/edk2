@@ -1,0 +1,58 @@
+## @file
+#
+#  Copyright (c) 2025, Intel Corporation. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SmmProfileTest
+  FILE_GUID                      = 9CBED045-C511-460D-BE58-5209507384A1
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SmmProfileTestEntrypoint
+#
+#  This flag specifies whether HII resource section is generated into PE image.
+#
+  UEFI_HII_RESOURCE_SECTION      = TRUE
+
+[Sources]
+  SmmProfileTest.c
+  SmmProfileTest.uni
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  ServerPlatformPkg/PlatformPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiLib
+  PrintLib
+  DevicePathLib
+  DxeServicesLib
+  UefiHiiServicesLib
+  HiiLib
+  ShellLib
+  HobLib
+
+[Protocols]
+  gEfiHiiPackageListProtocolGuid                        ## CONSUMES
+  gEfiMmCommunicationProtocolGuid                       ## CONSUMES
+
+[Guids]
+  gEdkiiPiSmmCommunicationRegionTableGuid               ## CONSUMES
+  gSmmProfileTestHobGuid                                ## CONSUMES
+
+[Depex]
+  TRUE

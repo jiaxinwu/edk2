@@ -1,0 +1,32 @@
+/// @file
+// UNI of SMM Profile Test Application.
+//
+// Copyright (c) 2025, Intel Corporation. All rights reserved.<BR>
+// SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+///
+
+  /= #
+
+#langdef   en-US "english"
+
+#string STR_GET_HELP_SMMPROFILETEST  #language en-US ""
+     "SmmProfileTest command usage:\r\n"
+     "  -dump            - Perform SMM Profile data dump.\r\n"
+     "  -clr             - Clear the existing SMM Profile count.\r\n"
+     "  -mmreschob       - Get the MM resource hob info.\r\n"
+     "  -test            - Perform address range from StartAddress to StopAddress.\r\n"
+     "    -StartAddress    - Require access start address (0-4K address range is\r\n"
+     "                       not allowed due to NULL point detect feature).\r\n"
+     "    -StopAddress     - Optional access stop address (default will be set to\r\n"
+     "                       the StartAddress).\r\n"
+     "    -IntervalSize    - Optional range interval size (min 2MB as mention below).\r\n"
+     "    \r\n"
+     "    Increase the access address from StartAddress to StopAddress in\r\n"
+     "    IntervalSize increments, default is 2MB, because the SMM CPU driver hardcodes\r\n"
+     "    the maximum paging size granularity to 2MB.\r\n"
+     "    If the corresponding page table node (2MB level) is present and non-leaf,\r\n"
+     "    the newly created page table entry for the PF address will be at the 4KB level.\r\n"
+     "    The maximum paging size granularity for the SMM profile can be determined by\r\n"
+     "    the PageSize from the GetPlatformPageTableAttribute() function. However,\r\n"
+     "    since this function is currently not supported, the granularity is hardcoded.\r\n"
